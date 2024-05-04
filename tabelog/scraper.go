@@ -45,12 +45,15 @@ func main() {
 	// Instantiate default collector
 	c := colly.NewCollector()
 
+	i := 0
 	// Extract li class="new-entry-item"
 	c.OnHTML(".list-rst__rst-data", func(e *colly.HTMLElement) {
+		i++
 		shopName := e.ChildText(".list-rst__rst-name-target")
-		fmt.Println("shopName:",shopName)
 		address := e.ChildText(".list-rst__area-genre")
-		fmt.Println("address:",address)
+		fmt.Println("id:", i)
+		fmt.Println("shopName:", shopName)
+		fmt.Println("address:", address)
 	})
 
 	// Before making a request print "Visiting URL: https://XXX"
